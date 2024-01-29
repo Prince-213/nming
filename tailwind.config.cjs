@@ -27,10 +27,10 @@ const config = {
       },
 
       backgroundImage: {
-        'engineer': "url('./src/lib/assets/WP/Picture1.jpg')",
-        'engine': "url('./src/lib/assets/pexels-mike-bird-190574.jpg')",
-        'site': "url('./src/lib/assets/pexels-pixabay-33192.jpg')",
-        'plan': "url('./src/lib/assets/WP/Picture3.jpg')",
+        'engineer': "url('https://i.imgur.com/e4IoZN8.jpg')",
+        'engine': "url('https://i.imgur.com/JeMjFqm.jpg')",
+        'site': "url('https://i.imgur.com/DUusnXa.jpg')",
+        'plan': "url('https://i.imgur.com/UMO1ZQw.jpg')",
       }
     },
   },
