@@ -70,27 +70,36 @@
 			icon: BriefcaseSolid
 		},
 	];
+
+	import Loader from '$lib/components/Loader.svelte';
+	import { navigating } from '$app/stores';
 </script>
 
-<div class=" min-h-screen w-full pb-20">
-	<div
-		class=" bg-site flex h-[40vh] bg-no-repeat w-full items-center justify-center bg-[#808080c0] bg-cover bg-center bg-blend-multiply"
-	>
-		<h1 class=" text-5xl font-bold text-white">Our Services</h1>
-	</div>
-
-	<div class=" w-full py-10">
-		<h1 class=" mb-10 text-center text-3xl font-bold">Services</h1>
-		<div class=" mx-auto grid lg:grid-cols-3 gap-20 w-[70%]">
-			{#each services as service}
-				<div
-					class="  flex flex-col items-center hover:bg-blue-600 text-black cursor-pointer hover:text-white transition-all duration-200 delay-100 ease-in-out space-y-5 rounded-md p-10 shadow-md shadow-gray-300"
-				>
-					<BriefcaseSolid />
-					<hr class=" w-8" />
-					<h3 class=" font-semibold">{service.name}</h3>
-				</div>
-			{/each}
+{#if $navigating}
+	<Loader />
+	{:else}
+	<div class=" min-h-screen w-full pb-20">
+		<div
+			class=" bg-site flex h-[40vh] bg-no-repeat w-full items-center justify-center bg-[#808080c0] bg-cover bg-center bg-blend-multiply"
+		>
+			<h1 class=" text-5xl font-bold text-white">Our Services</h1>
+		</div>
+	
+		<div class=" w-full py-10">
+			<h1 class=" mb-10 text-center text-3xl font-bold">Services</h1>
+			<div class=" mx-auto grid lg:grid-cols-3 gap-20 w-[70%]">
+				{#each services as service}
+					<div
+						class="  flex flex-col items-center hover:bg-blue-600 text-black cursor-pointer hover:text-white transition-all duration-200 delay-100 ease-in-out space-y-5 rounded-md p-10 shadow-md shadow-gray-300"
+					>
+						<BriefcaseSolid />
+						<hr class=" w-8" />
+						<h3 class=" font-semibold">{service.name}</h3>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</div>
-</div>
+{/if}
+
+

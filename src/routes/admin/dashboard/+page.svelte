@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Input, Label, Modal, Select } from 'flowbite-svelte';
 
+	import Loader from '$lib/components/Loader.svelte';
+	
+
 	let defaultUpdateModal = false;
 
 	let items = [
@@ -68,7 +71,7 @@
 
 <div class=" mx-auto w-full">
 	{#if $navigating}
-		<ListPlaceholder class=" h-[30em]" />
+		<Loader  />
 	{:else}
 		<div class=" mx-auto w-[85%] overflow-x-scroll pt-[10vh] lg:overflow-x-hidden">
 			<TableSearch
