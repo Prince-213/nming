@@ -28,12 +28,12 @@
 
 <div class=" w-full overflow-x-hidden">
 	<Carousel />
-	<section class=" min-h-screen w-full bg-white pt-10">
-		<h1 class=" mb-10 text-center text-3xl font-semibold">See what's trending</h1>
+	<section class=" lg:min-h-screen w-full bg-white pt-10">
+		<h1 class=" mb-10 text-center text-xl lg:text-3xl font-semibold">See what's trending</h1>
 		<div class=" mx-auto grid w-[80%] grid-cols-1 gap-10 lg:grid-cols-3">
 			{#each equips as e}
-				<div class=" flex h-[80vh] w-full flex-col justify-between space-y-5 rounded-md border-2 p-4">
-					<img src={e.image} class="  h-[70%] w-auto" alt="" />
+				<div class=" h-fit flex lg:fit w-full flex-col justify-between space-y-10 rounded-md border-2 p-4">
+					<img src={e.image} class="  w-auto h-[20em]" alt="" />
 					<div class=" flex h-[20%]  flex-col  justify-end">
 						<div class=" flex items-center justify-between">
 							<div class=" flex items-center space-x-2">
@@ -53,8 +53,8 @@
 			{/each}
 		</div>
 	</section>
-	<section class=" mx-auto w-[80%] space-y-5 pb-5 text-lg font-medium">
-		<h1 class=" text-4xl font-semibold">What is Metrology?</h1>
+	<section class=" lg:pt-0 pt-20 mx-auto w-[80%] space-y-5 pb-5 text-lg font-medium">
+		<h1 class=" text-2xl lg:text-4xl font-semibold">What is Metrology?</h1>
 		<p>Metrology is the science of measurement. It covers three main activities.</p>
 		<p>1. The definition of internationally accepted units of measurements. e.g the metre.</p>
 		<p>

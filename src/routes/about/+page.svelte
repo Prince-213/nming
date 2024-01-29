@@ -41,21 +41,21 @@
 	onMount(() => {});
 </script>
 
-<div class=" min-h-screen w-full">
+<div class=" min-h-screen w-full overflow-x-hidden">
 	<div
-		class=" flex h-[40vh] w-full items-center justify-center bg-[#808080c0] bg-site bg-cover bg-center bg-blend-multiply"
+		class=" flex h-[40vh] w-full items-center justify-center bg-[#808080c0] bg-no-repeat bg-site bg-cover bg-center bg-blend-multiply"
 	>
-		<h1 class=" text-5xl font-bold text-white">About Us</h1>
+		<h1 class=" text-3xl lg:text-5xl font-bold text-white">About Us</h1>
 	</div>
 	<div class=" w-full">
-		<div class=" mx-auto w-[80%] pt-[25vh]">
-			<div class=" relative h-[80vh] w-[70%] rounded-sm bg-plan bg-cover bg-center">
+		<div class=" mx-auto w-[90%] lg:w-[80%] pt-[10vh] lg:pt-[25vh]">
+			<div class=" relative h-[40vh] lg:h-[80vh] w-full lg:w-[70%] rounded-sm bg-plan bg-cover bg-center">
 				<div
-					class=" absolute -right-[20em] top-[6vh] h-fit w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
+					class=" absolute lg:-right-[20em] lg:top-[6vh] h-fit w-[95%] -right-[-2.5%] top-[20vh] lg:w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
 				>
 					<div class=" space-y-2 text-white">
-						<h1 class=" text-3xl font-bold">Our Mission</h1>
-						<p>
+						<h1 class=" lg:text-3xl text-xl font-bold">Our Mission</h1>
+						<p class=" lg:text-base lg:line-clamp-none line-clamp-[15] text-sm">
 							At NMI Nigeria, our mission is to redefine precision through innovative metrology
 							solutions. We are dedicated to empowering industries with cutting-edge measurement
 							technologies that ensure accuracy, reliability, and efficiency in every dimension.
@@ -71,15 +71,15 @@
 			</div>
 		</div>
 	</div>
-	<div class=" w-full">
-		<div class=" mx-auto w-[80%] pt-[25vh]">
-			<div class=" relative ml-[30%] h-[80vh] w-[70%] rounded-sm bg-plan bg-cover bg-center">
+	<div class=" w-full mt-[5vh] lg:mt-0 ">
+		<div class=" w-[80%] pt-[25vh] lg:ml-[30%] mx-auto">
+			<div class=" relative h-[40vh] lg:h-[80vh] w-full lg:w-[70%] rounded-sm bg-plan bg-cover bg-center">
 				<div
-					class=" absolute -left-[20em] top-[6vh] h-fit w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
+					class=" absolute lg:-left-[20em] lg:top-[6vh] h-fit w-[95%] -left-[-2.5%] top-[20vh] lg:w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
 				>
 					<div class=" space-y-2 text-white">
-						<h1 class=" text-3xl font-bold">Our Vision</h1>
-						<p>
+						<h1 class=" text-sm lg:text-3xl font-bold">Our Vision</h1>
+						<p class=" text-sm lg:line-clamp-none line-clamp-[15] lg:text-base">
 							At NIM Nigeria, we envision a future where precision is the cornerstone of
 							technological advancement and quality assurance across global industries. Our
 							commitment lies in pioneering metrology solutions that transcend boundaries, setting
@@ -96,15 +96,15 @@
 			</div>
 		</div>
 	</div>
-	<div class=" w-full">
+	<div class=" w-full mt-[5vh] pb-[30vh] lg:pb-0 lg:mt-0">
 		<div class=" mx-auto w-[80%] pt-[25vh]">
-			<div class=" relative h-[80vh] w-[70%] rounded-sm bg-plan bg-cover bg-center">
+			<div class=" relative h-[40vh] lg:h-[80vh] w-full lg:w-[70%] rounded-sm bg-plan bg-cover bg-center">
 				<div
-					class=" absolute -right-[20em] top-[6vh] h-fit w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
+					class=" absolute lg:-right-[20em] lg:top-[6vh] h-fit w-[95%] -right-[-2.5%] top-[20vh] lg:w-[60%] space-y-5 rounded-sm bg-blue-700 p-10"
 				>
 					<div class=" space-y-2 text-white">
-						<h1 class=" text-3xl font-bold">Our Core Values</h1>
-						<p>
+						<h1 class=" text-xl lg:text-3xl font-bold">Our Core Values</h1>
+						<p class=" text-sm lg:text-base lg:line-clamp-none line-clamp-[15]">
 							Precision Excellence: We uphold an unwavering commitment to delivering precision
 							excellence in all our metrology solutions. Accuracy is not just a goal; it is the
 							standard by which we measure our success. 
