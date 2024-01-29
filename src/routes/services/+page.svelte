@@ -74,7 +74,7 @@
 
 <div class=" min-h-screen w-full pb-20">
 	<div
-		class=" bg-site flex h-[40vh] w-full items-center justify-center bg-[#808080c0] bg-cover bg-center bg-blend-multiply"
+		class=" bg-site flex h-[40vh] bg-no-repeat w-full items-center justify-center bg-[#808080c0] bg-cover bg-center bg-blend-multiply"
 	>
 		<h1 class=" text-5xl font-bold text-white">Our Services</h1>
 	</div>
