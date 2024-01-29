@@ -13,7 +13,7 @@ export const actions = {
 
         console.log(data)
 
-        if (name == 'peternnalue@gmail.com' && pass == '1234') {
+        if (name == 'peternnalue@gmail.com' && pass == 'pas@adimin#123@nmi') {
             cookies.set("status", 'admin', {path: '/'})
             return { message: "Access Grandted", error: false }
             throw redirect(303, url.searchParams.get('redirectTo') || '/')
