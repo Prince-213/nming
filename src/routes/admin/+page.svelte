@@ -37,7 +37,7 @@
 {#if $navigating}
 	<Loader />
 	{:else}
-	<div class=" w-[50%] mx-auto">
+	<div class=" lg:w-[50%] w-[85%]  mx-auto">
 		<Section name="login">
 			<Register href="/">
 				<svelte:fragment slot="top">
