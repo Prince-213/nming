@@ -2,9 +2,9 @@
 	import { Input, Label, Modal, Select } from 'flowbite-svelte';
 
 	import Loader from '$lib/components/Loader.svelte';
-	
 
 	let defaultUpdateModal = false;
+	let closeModal = false;
 
 	let items = [
 		{ value: true, name: 'FINISHED' },
@@ -31,11 +31,16 @@
 	const handleUpdate = async (id: any, status: boolean) => {
 		const { data, error } = await supabase
 			.from('nmi_requests')
-			.update({ status: !status})
+			.update({ status: !status })
 			.eq('id', id)
 			.select();
 
-		invalidateAll()
+		invalidateAll();
+	};
+
+	const handleDelete = async (id: any) => {
+		const { error } = await supabase.from('nmi_requests').delete().eq('id', id);
+		invalidateAll();
 	};
 
 	import { goto, invalidateAll } from '$app/navigation';
@@ -48,7 +53,7 @@
 
 	import { Button, Checkbox, ListPlaceholder, WidgetPlaceholder } from 'flowbite-svelte';
 
-	import { EditOutline, TrashBinOutline, UserEditOutline } from 'flowbite-svelte-icons';
+	import { EditOutline, TrashBinOutline } from 'flowbite-svelte-icons';
 
 	import {
 		Table,
@@ -67,11 +72,22 @@
 	$: filteredItems = filtereditems?.filter(
 		(item) => item['name'].toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
 	);
+
+	const formattedDate = (value: any) => {
+		const inputDateString = value;
+		const inputDate = new Date(inputDateString);
+		const options = { year: 'numeric', month: 'short', day: 'numeric' };
+		const formattedDates = inputDate.toLocaleDateString('en-US', options);
+
+		return formattedDates;
+	}
+
+	
 </script>
 
 <div class=" mx-auto w-full">
 	{#if $navigating}
-		<Loader  />
+		<Loader />
 	{:else}
 		<div class=" mx-auto w-[85%] overflow-x-scroll pt-[10vh] lg:overflow-x-hidden">
 			<TableSearch
@@ -83,6 +99,7 @@
 				<TableHead>
 					<TableHeadCell>S/N</TableHeadCell>
 					<TableHeadCell>Id</TableHeadCell>
+					<TableHeadCell>Date Requested</TableHeadCell>
 					<TableHeadCell>Name</TableHeadCell>
 					<TableHeadCell>Email</TableHeadCell>
 					<TableHeadCell>Brand</TableHeadCell>
@@ -95,6 +112,7 @@
 						<TableBodyRow>
 							<TableBodyCell>{idx + 1}</TableBodyCell>
 							<TableBodyCell>{item.id}</TableBodyCell>
+							<TableBodyCell>{formattedDate(item.created_at)}</TableBodyCell>
 							<TableBodyCell>{item.name}</TableBodyCell>
 							<TableBodyCell>{item.email}</TableBodyCell>
 							<TableBodyCell>
@@ -121,8 +139,35 @@
 									class=" bg-transparent font-semibold text-white hover:bg-transparent"
 									on:click={() => (defaultModal = true)}><EditOutline class=" text-black" /></Button
 								>
+
+								<Button
+									class=" bg-transparent font-semibold text-white hover:bg-transparent"
+									on:click={() => (closeModal = true)}><TrashBinOutline class=" text-black" /></Button
+								>
 							</TableBodyCell>
 						</TableBodyRow>
+						<Modal
+							title=""
+							bind:open={closeModal}
+							autoclose
+							size="sm"
+							class="flex w-full flex-col items-center"
+						>
+							<div class=" mx-auto flex w-[80%] items-center justify-center">
+								<TrashBinOutline class=" h-24 w-24 text-center text-gray-500" />
+							</div>
+
+							<p class="mb-4 text-center text-gray-500 dark:text-gray-300">
+								Are you Sure you want to delete this job
+							</p>
+							<div class="flex items-center justify-center space-x-4">
+								<Button color="light" on:click={handleCancel}>No, cancel</Button>
+								<Button color="red" on:click={() => handleDelete(item.id)}
+									>Yes, I'm sure</Button
+								>
+							</div>
+						</Modal>
+
 						<Modal
 							title=""
 							bind:open={defaultModal}
@@ -135,11 +180,13 @@
 							</div>
 
 							<p class="mb-4 text-center text-gray-500 dark:text-gray-300">
-								Are you sure you want to update the users status?
+								Are you sure you want to update the job status?
 							</p>
 							<div class="flex items-center justify-center space-x-4">
 								<Button color="light" on:click={handleCancel}>No, cancel</Button>
-								<Button color="red" on:click={() => handleUpdate(item.id, item.status)}>Yes, I'm sure</Button>
+								<Button color="red" on:click={() => handleUpdate(item.id, item.status)}
+									>Yes, I'm sure</Button
+								>
 							</div>
 						</Modal>
 					{/each}
