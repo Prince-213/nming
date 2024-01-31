@@ -7,6 +7,8 @@
 	import { fade } from 'svelte/transition';
 	import { supabase } from '$lib/supabaseClient';
 
+    let message: string = '';
+
 	export let data: PageData;
 
 	const productData = {
@@ -40,9 +42,14 @@
 			.insert([{ name: productData.name, email: productData.email, brand: productData.brand, service: selected }])
 			.select();
 
+            if (!error) {
+                message = 'submitted successfully'
+            }
+
 			sending = false;
 		} catch (error) {
 		} finally {
+
 		}
 	};
 
@@ -111,6 +118,8 @@
                         {/if}
                     </Button>
                 </div>
+
+                <p class=" text-sm lg:text-lg font-medium text-black">{message}</p>
             </div>
         </form>
     </div>
