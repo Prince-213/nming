@@ -43,7 +43,12 @@
 			.select();
 
             if (!error) {
-                message = 'submitted successfully'
+                productData.name = ''
+                productData.email = ''
+                productData.brand = ''
+                message = 'Submitted Successfully!'
+            } else {
+                message = 'Request Unsuccessful!'
             }
 
 			sending = false;
@@ -119,8 +124,9 @@
                     </Button>
                 </div>
 
-                <p class=" text-sm lg:text-lg font-medium text-black">{message}</p>
+                
             </div>
+            <p class=" text-sm lg:text-lg font-medium text-black">{message}</p>
         </form>
     </div>
 {/if}

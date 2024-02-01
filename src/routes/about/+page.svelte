@@ -13,6 +13,8 @@
 
 	export let data: PageData;
 
+	let message: string = ''
+
 	const productData = {
 		name: '',
 		email: '',
@@ -36,8 +38,18 @@
 				'lXy3uMKebxhwBPRWt'
 			);
 
+			
+
 			sending = false;
 		} catch (error) {
+			if (!error) {
+                productData.name = ''
+                productData.email = ''
+                productData.message = ''
+                message = 'Submitted Successfully!'
+            } else {
+                message = 'Unsuccessful!'
+            }
 		} finally {
 		}
 	};
@@ -183,6 +195,7 @@
 						</Button>
 					</div>
 				</div>
+				<p class=" text-sm lg:text-lg font-medium text-black">{message}</p>
 			</form>
 		</div>
 	</div>
