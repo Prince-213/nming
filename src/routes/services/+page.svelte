@@ -3,8 +3,6 @@
 
 	import type { PageData } from './$types';
 
-	export let data: PageData;
-
 	const productData = {
 		name: '',
 		brand: '',
@@ -68,7 +66,7 @@
 		{
 			name: 'Test chambers',
 			icon: BriefcaseSolid
-		},
+		}
 	];
 
 	import Loader from '$lib/components/Loader.svelte';
@@ -77,20 +75,20 @@
 
 {#if $navigating}
 	<Loader />
-	{:else}
+{:else}
 	<div class=" min-h-screen w-full pb-20">
 		<div
-			class=" bg-site flex h-[40vh] bg-no-repeat w-full items-center justify-center bg-[#808080c0] bg-cover bg-center bg-blend-multiply"
+			class=" flex h-[40vh] w-full items-center justify-center bg-[#808080c0] bg-site bg-cover bg-center bg-no-repeat bg-blend-multiply"
 		>
 			<h1 class=" text-5xl font-bold text-white">Our Services</h1>
 		</div>
-	
+
 		<div class=" w-full py-10">
 			<h1 class=" mb-10 text-center text-3xl font-bold">Services</h1>
-			<div class=" mx-auto grid lg:grid-cols-3 gap-20 w-[70%]">
+			<div class=" mx-auto grid w-[70%] gap-20 lg:grid-cols-3">
 				{#each services as service}
 					<div
-						class="  flex flex-col items-center hover:bg-blue-600 text-black cursor-pointer hover:text-white transition-all duration-200 delay-100 ease-in-out space-y-5 rounded-md p-10 shadow-md shadow-gray-300"
+						class="  flex cursor-pointer flex-col items-center space-y-5 rounded-md p-10 text-black shadow-md shadow-gray-300 transition-all delay-100 duration-200 ease-in-out hover:bg-blue-600 hover:text-white"
 					>
 						<BriefcaseSolid />
 						<hr class=" w-8" />
@@ -101,5 +99,3 @@
 		</div>
 	</div>
 {/if}
-
-

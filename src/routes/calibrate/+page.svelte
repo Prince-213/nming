@@ -7,9 +7,7 @@
 	import { fade } from 'svelte/transition';
 	import { supabase } from '$lib/supabaseClient';
 
-    let message: string = '';
-
-	export let data: PageData;
+	let message: string = '';
 
 	const productData = {
 		name: '',
@@ -19,9 +17,7 @@
 
 	let sending = false;
 
-	const insert = async () => {
-		
-	};
+	const insert = async () => {};
 
 	const contactUs = async () => {
 		sending = true;
@@ -37,28 +33,34 @@
 				'lXy3uMKebxhwBPRWt'
 			);
 
-            const { data, error } = await supabase
-			.from('nmi_requests')
-			.insert([{ name: productData.name, email: productData.email, brand: productData.brand, service: selected }])
-			.select();
+			const { data, error } = await supabase
+				.from('nmi_requests')
+				.insert([
+					{
+						name: productData.name,
+						email: productData.email,
+						brand: productData.brand,
+						service: selected
+					}
+				])
+				.select();
 
-            if (!error) {
-                productData.name = ''
-                productData.email = ''
-                productData.brand = ''
-                message = 'Submitted Successfully!'
-            } else {
-                message = 'Request Unsuccessful!'
-            }
+			if (!error) {
+				productData.name = '';
+				productData.email = '';
+				productData.brand = '';
+				message = 'Submitted Successfully!';
+			} else {
+				message = 'Request Unsuccessful!';
+			}
 
 			sending = false;
 		} catch (error) {
 		} finally {
-
 		}
 	};
 
-    import Loader from '$lib/components/Loader.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 	import { navigating } from '$app/stores';
 
 	let selected = 'Mass Calibration';
@@ -69,66 +71,62 @@
 	];
 </script>
 
-{#if  $navigating}
-    <Loader />
-    {:else}
-    <div class=" flex min-h-screen w-full py-[10vh]">
-        <form class=" mx-auto w-[80%]">
-            <div class="mb-4 grid gap-x-20 gap-y-10 sm:grid-cols-2">
-                <div>
-                    <Label for="name" class="mb-2">Name</Label>
-                    <Input
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder=""
-                        bind:value={productData.name}
-                        required
-                    />
-                </div>
-                <div>
-                    <Label for="price" class="mb-2">Email</Label>
-                    <Input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder=""
-                        bind:value={productData.email}
-                        required
-                    />
-                </div>
-                <div>
-                    <Label for="brand" class="mb-2">Brand</Label>
-                    <Input type="text" id="brand" placeholder="" bind:value={productData.brand} required />
-                </div>
-    
-                <div>
-                    <Label
-                        >Service
-                        <Select name="service" class="mt-2" {items} bind:value={selected} required />
-                    </Label>
-                </div>
-    
-                <div class="flex items-center space-x-4">
-                    <Button
-                        color="blue"
-                        on:click={contactUs}
-                        class="flex w-64 items-center space-x-3  text-lg font-semibold"
-                    >
-                        <p>Submit</p>
-                        {#if sending}
-                            <div transition:fade>
-                                <Spinner size="5" color="white" />
-                            </div>
-                        {/if}
-                    </Button>
-                </div>
+{#if $navigating}
+	<Loader />
+{:else}
+	<div class=" flex min-h-screen w-full py-[10vh]">
+		<form class=" mx-auto w-[80%]">
+			<div class="mb-4 grid gap-x-20 gap-y-10 sm:grid-cols-2">
+				<div>
+					<Label for="name" class="mb-2">Name</Label>
+					<Input
+						type="text"
+						name="name"
+						id="name"
+						placeholder=""
+						bind:value={productData.name}
+						required
+					/>
+				</div>
+				<div>
+					<Label for="price" class="mb-2">Email</Label>
+					<Input
+						type="email"
+						id="email"
+						name="email"
+						placeholder=""
+						bind:value={productData.email}
+						required
+					/>
+				</div>
+				<div>
+					<Label for="brand" class="mb-2">Brand</Label>
+					<Input type="text" id="brand" placeholder="" bind:value={productData.brand} required />
+				</div>
 
-                
-            </div>
-            <p class=" text-sm lg:text-lg font-medium text-black">{message}</p>
-        </form>
-    </div>
+				<div>
+					<Label
+						>Service
+						<Select name="service" class="mt-2" {items} bind:value={selected} required />
+					</Label>
+				</div>
+
+				<div class="flex items-center space-x-4">
+					<Button
+						color="blue"
+						on:click={contactUs}
+						class="flex w-64 items-center space-x-3  text-lg font-semibold"
+					>
+						<p>Submit</p>
+						{#if sending}
+							<div transition:fade>
+								<Spinner size="5" color="white" />
+							</div>
+						{/if}
+					</Button>
+				</div>
+			</div>
+			<p class=" text-sm font-medium text-black lg:text-lg">{message}</p>
+		</form>
+	</div>
 {/if}
-
-
