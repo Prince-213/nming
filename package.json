@@ -12,7 +12,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/adapter-vercel": "^5.6.3",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@types/eslint": "8.56.0",
@@ -41,6 +41,7 @@
 	"type": "module",
 	"dependencies": {
 		"@emailjs/browser": "^3.12.1",
-		"@supabase/supabase-js": "^2.39.3"
+		"@supabase/supabase-js": "^2.39.3",
+		"@sveltejs/adapter-auto": "^4.0.0"
 	}
 }
